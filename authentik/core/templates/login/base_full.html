@@ -1,0 +1,96 @@
+{% extends 'base/skeleton.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_before %}
+<link rel="prefetch" href="/static/dist/assets/images/flow_background.jpg" />
+<link rel="stylesheet" type="text/css" href="{% static 'dist/patternfly.min.css' %}">
+{% include "base/header_js.html" %}
+{% endblock %}
+
+{% block head %}
+<style>
+:root {
+    --ak-flow-background: url("/static/dist/assets/images/flow_background.jpg");
+    --pf-c-background-image--BackgroundImage: var(--ak-flow-background);
+    --pf-c-background-image--BackgroundImage-2x: var(--ak-flow-background);
+    --pf-c-background-image--BackgroundImage--sm: var(--ak-flow-background);
+    --pf-c-background-image--BackgroundImage--sm-2x: var(--ak-flow-background);
+    --pf-c-background-image--BackgroundImage--lg: var(--ak-flow-background);
+}
+/* Form with user */
+.form-control-static {
+    margin-top: var(--pf-global--spacer--sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-control-static .avatar {
+    display: flex;
+    align-items: center;
+}
+.form-control-static img {
+    margin-right: var(--pf-global--spacer--xs);
+}
+.form-control-static a {
+    padding-top: var(--pf-global--spacer--xs);
+    padding-bottom: var(--pf-global--spacer--xs);
+    line-height: var(--pf-global--spacer--xl);
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="pf-c-background-image">
+    <svg xmlns="http://www.w3.org/2000/svg" class="pf-c-background-image__filter" width="0" height="0">
+        <filter id="image_overlay">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="1.3 0 0 0 0 0 1.3 0 0 0 0 0 1.3 0 0 0 0 0 1 0" />
+            <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
+                <feFuncR type="table" tableValues="0.086274509803922 0.43921568627451"></feFuncR>
+                <feFuncG type="table" tableValues="0.086274509803922 0.43921568627451"></feFuncG>
+                <feFuncB type="table" tableValues="0.086274509803922 0.43921568627451"></feFuncB>
+                <feFuncA type="table" tableValues="0 1"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+    </svg>
+</div>
+<ak-message-container></ak-message-container>
+<div class="pf-c-login">
+    <div class="ak-login-container">
+        <header class="pf-c-login__header">
+            <div class="pf-c-brand ak-brand">
+                <img src="{{ tenant.branding_logo }}" alt="authentik Logo" />
+            </div>
+        </header>
+        {% block main_container %}
+        <main class="pf-c-login__main">
+            <header class="pf-c-login__main-header">
+                <h1 class="pf-c-title pf-m-3xl">
+                    {% block card_title %}
+                    {% endblock %}
+                </h1>
+            </header>
+            <div class="pf-c-login__main-body">
+                {% block card %}
+                {% endblock %}
+            </div>
+        </main>
+        {% endblock %}
+        <footer class="pf-c-login__footer">
+            <ul class="pf-c-list pf-m-inline">
+                {% for link in footer_links %}
+                <li>
+                    <a href="{{ link.href }}">{{ link.name }}</a>
+                </li>
+                {% endfor %}
+                <li>
+                    <a href="https://goauthentik.io?utm_source=authentik">
+                        {% trans 'Powered by authentik' %}
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>
+{% endblock %}

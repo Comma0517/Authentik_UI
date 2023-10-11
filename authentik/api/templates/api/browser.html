@@ -1,0 +1,17 @@
+{% extends "base/skeleton.html" %}
+
+{% load static %}
+
+{% block title %}
+API Browser - {{ tenant.branding_title }}
+{% endblock %}
+
+{% block head %}
+<script src="{% static 'dist/standalone/api-browser/index.js' %}?version={{ version }}" type="module"></script>
+<meta name="theme-color" content="#151515" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
+{% endblock %}
+
+{% block body %}
+<ak-api-browser schemaPath="{{ path }}"></ak-api-browser>
+{% endblock %}
