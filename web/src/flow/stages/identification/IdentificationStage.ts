@@ -198,6 +198,17 @@ export class IdentificationStage extends BaseStage<
         </div>`;
     }
 
+    renderOauth(): TemplateResult {
+        return html`<div class="pf-c-google">
+            <div class="pf-c-google-btn">
+                <div class="pf-c-google-icon-wrapper">
+                    <img class="pf-c-google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="pf-c-btn-text">Sign in with google</p>
+            </div>
+        </div>`;
+    }
+
     renderInput(): TemplateResult {
         let type: "text" | "email" = "text";
         if (!this.challenge?.userFields || this.challenge.userFields.length === 0) {
@@ -292,6 +303,7 @@ export class IdentificationStage extends BaseStage<
                           </p>`
                         : html``}
                     ${this.renderInput()}
+                    ${this.renderOauth()}
                 </form>
             </div>
             <footer class="pf-c-login__main-footer">

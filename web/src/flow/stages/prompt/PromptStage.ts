@@ -280,6 +280,17 @@ ${prompt.initialValue}</textarea
         </div>`;
     }
 
+    renderOauth(): TemplateResult {
+        return html`<div class="pf-c-google">
+            <div class="pf-c-google-btn">
+                <div class="pf-c-google-icon-wrapper">
+                    <img class="pf-c-google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="pf-c-btn-text">Sign in with google</p>
+            </div>
+        </div>`;
+    }
+
     render(): TemplateResult {
         if (!this.challenge) {
             return html`<ak-empty-state ?loading="${true}" header=${msg("Loading")}>
@@ -304,6 +315,7 @@ ${prompt.initialValue}</textarea
                           )
                         : html``}
                     ${this.renderContinue()}
+                    ${this.renderOauth()}
                 </form>
             </div>
             <footer class="pf-c-login__main-footer">
