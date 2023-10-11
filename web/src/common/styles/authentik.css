@@ -1,14 +1,14 @@
 :root {
     --ak-accent: #fd4b2d;
 
-    --ak-dark-foreground: #fafafa;
-    --ak-dark-foreground-darker: #bebebe;
-    --ak-dark-foreground-link: #5a5cb9;
-    --ak-dark-background: #18191a;
-    --ak-dark-background-darker: #000000;
-    --ak-dark-background-light: #1c1e21;
-    --ak-dark-background-light-ish: #212427;
-    --ak-dark-background-lighter: #2b2e33;
+    --ak-light-foreground: #020202;
+    --ak-light-foreground-darker: #3f3f3f;
+    --ak-light-foreground-link: #9a6ef5;
+    --ak-light-background: #f6f6f6;
+    --ak-light-background-darker: #757575;
+    --ak-light-background-light: #ffffff;
+    --ak-light-background-light-ish: #d3d4d9;
+    --ak-light-background-lighter: #d4d6db;
 
     /* PatternFly likes to override global variables for some reason */
     --ak-global--Color--100: var(--pf-global--Color--100);
@@ -53,7 +53,7 @@ html > form > input {
 
 .pf-c-page__header {
     z-index: 0;
-    background-color: var(--ak-dark-background-light);
+    background-color: var(--ak-light-background-light);
     box-shadow: var(--pf-global--BoxShadow--lg-bottom);
 }
 
@@ -79,7 +79,7 @@ html > form > input {
 .pf-c-login__footer {
     flex-grow: 2;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     flex-direction: column;
 }
 .pf-c-login__footer ul.pf-c-list.pf-m-inline {

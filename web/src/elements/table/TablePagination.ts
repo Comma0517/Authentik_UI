@@ -26,11 +26,11 @@ export class TablePagination extends AKElement {
             PFButton,
             PFPagination,
             css`
-                :host([theme="dark"]) .pf-c-pagination__nav-control .pf-c-button {
+                :host([theme="light"]) .pf-c-pagination__nav-control .pf-c-button {
                     color: var(--pf-c-button--m-plain--disabled--Color);
                     --pf-c-button--disabled--Color: var(--pf-c-button--m-plain--Color);
                 }
-                :host([theme="dark"]) .pf-c-pagination__nav-control .pf-c-button:disabled {
+                :host([theme="light"]) .pf-c-pagination__nav-control .pf-c-button:disabled {
                     color: var(--pf-c-button--disabled--Color);
                 }
             `,

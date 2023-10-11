@@ -45,8 +45,8 @@ export class APIBrowser extends Interface {
                     .trim();
                 this.textColor = style.getPropertyValue("--pf-global--Color--300").trim();
             } else {
-                this.bgColor = style.getPropertyValue("--ak-dark-background").trim();
-                this.textColor = style.getPropertyValue("--ak-dark-foreground").trim();
+                this.bgColor = style.getPropertyValue("--ak-light-background").trim();
+                this.textColor = style.getPropertyValue("--ak-light-foreground").trim();
             }
         }) as EventListener);
         this.dispatchEvent(

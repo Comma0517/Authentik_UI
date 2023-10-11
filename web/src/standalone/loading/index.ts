@@ -21,8 +21,8 @@ export class Loading extends Interface {
             PFSpinner,
             PFEmptyState,
             css`
-                :host([theme="dark"]) h1 {
-                    color: var(--ak-dark-foreground);
+                :host([theme="light"]) h1 {
+                    color: var(--ak-light-foreground);
                 }
             `,
         ];

@@ -55,10 +55,10 @@ export class UserSettingsPage extends AKElement {
                 .pf-c-page__main-section {
                     --pf-c-page__main-section--BackgroundColor: transparent;
                 }
-                :host([theme="dark"]) .pf-c-page {
+                :host([theme="light"]) .pf-c-page {
                     --pf-c-page--BackgroundColor: transparent;
                 }
-                :host([theme="dark"]) .pf-c-page__main-section {
+                :host([theme="light"]) .pf-c-page__main-section {
                     --pf-c-page__main-section--BackgroundColor: transparent;
                 }
                 @media screen and (min-width: 1200px) {

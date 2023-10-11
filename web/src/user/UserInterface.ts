@@ -79,8 +79,8 @@ export class UserInterface extends Interface {
                     box-shadow: none !important;
                     color: black !important;
                 }
-                :host([theme="dark"]) .pf-c-page__header {
-                    color: var(--ak-dark-foreground) !important;
+                :host([theme="light"]) .pf-c-page__header {
+                    color: var(--ak-light-foreground) !important;
                 }
                 .pf-c-page__header-tools-item .fas,
                 .pf-c-notification-badge__count,
@@ -114,7 +114,7 @@ export class UserInterface extends Interface {
                     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
                     height: 50vh;
                 }
-                :host([theme="dark"]) .background-default-slant {
+                :host([theme="light"]) .background-default-slant {
                     background-color: black;
                 }
                 ak-locale-context {

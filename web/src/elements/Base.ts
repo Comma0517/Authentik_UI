@@ -8,7 +8,7 @@ import { CSSResult, LitElement } from "lit";
 import { state } from "lit/decorators.js";
 
 import AKGlobal from "@goauthentik/common/styles/authentik.css";
-import ThemeDark from "@goauthentik/common/styles/theme-dark.css";
+import ThemeDark from "@goauthentik/common/styles/theme-light.css";
 import PFBase from "@patternfly/patternfly/patternfly-base.css";
 
 import { Config, CurrentTenant, UiThemeEnum } from "@goauthentik/api";

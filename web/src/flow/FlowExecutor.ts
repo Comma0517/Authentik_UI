@@ -11,8 +11,6 @@ import { WebsocketClient } from "@goauthentik/common/ws";
 import { Interface } from "@goauthentik/elements/Base";
 import "@goauthentik/elements/LoadingOverlay";
 import "@goauthentik/elements/ak-locale-context";
-import "@goauthentik/flow/sources/apple/AppleLoginInit";
-import "@goauthentik/flow/sources/plex/PlexLoginInit";
 import "@goauthentik/flow/stages/FlowErrorStage";
 import "@goauthentik/flow/stages/RedirectStage";
 import { StageHost } from "@goauthentik/flow/stages/base";
@@ -138,13 +136,13 @@ export class FlowExecutor extends Interface implements StageHost {
                 padding-top: 0;
                 padding-bottom: 0;
             }
-            :host([theme="dark"]) .pf-c-login.sidebar_left .ak-login-container,
-            :host([theme="dark"]) .pf-c-login.sidebar_right .ak-login-container {
-                background-color: var(--ak-dark-background);
+            :host([theme="light"]) .pf-c-login.sidebar_left .ak-login-container,
+            :host([theme="light"]) .pf-c-login.sidebar_right .ak-login-container {
+                background-color: var(--ak-light-background);
             }
-            :host([theme="dark"]) .pf-c-login.sidebar_left .pf-c-list,
-            :host([theme="dark"]) .pf-c-login.sidebar_right .pf-c-list {
-                color: var(--ak-dark-foreground);
+            :host([theme="light"]) .pf-c-login.sidebar_left .pf-c-list,
+            :host([theme="light"]) .pf-c-login.sidebar_right .pf-c-list {
+                color: var(--ak-light-foreground);
             }
         `);
     }
@@ -355,11 +353,13 @@ export class FlowExecutor extends Interface implements StageHost {
                 ></ak-stage-user-login>`;
             // Sources
             case "ak-source-plex":
+                await import("@goauthentik/flow/sources/plex/PlexLoginInit");
                 return html`<ak-flow-source-plex
                     .host=${this as StageHost}
                     .challenge=${this.challenge}
                 ></ak-flow-source-plex>`;
             case "ak-source-oauth-apple":
+                await import("@goauthentik/flow/sources/apple/AppleLoginInit");
                 return html`<ak-flow-source-oauth-apple
                     .host=${this as StageHost}
                     .challenge=${this.challenge}
@@ -488,9 +488,24 @@ export class FlowExecutor extends Interface implements StageHost {
     }
 
     render(): TemplateResult {
-        return html` <ak-locale-context>
+        return html`
+        <!-- Google Tag Manager --> 
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5G28KCLJ');
+        </script>
+        <!-- End Google Tag Manager -->
+        <ak-locale-context>
             <div class="pf-c-background-image">${this.renderBackgroundOverlay()}</div>
             <div class="pf-c-page__drawer">
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G28KCLJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->    
                 <div class="pf-c-drawer ${this.inspectorOpen ? "pf-m-expanded" : "pf-m-collapsed"}">
                     <div class="pf-c-drawer__main">
                         <div class="pf-c-drawer__content">
@@ -517,12 +532,6 @@ export class FlowExecutor extends Interface implements StageHost {
                                                         >
                                                     </li>`;
                                                 })}
-                                                <li>
-                                                    <a
-                                                        href="https://goauthentik.io?utm_source=authentik&amp;utm_medium=flow"
-                                                        >${msg("Powered by authentik")}</a
-                                                    >
-                                                </li>
                                                 ${this.flowInfo?.background?.startsWith("/static")
                                                     ? html`
                                                           <li>
