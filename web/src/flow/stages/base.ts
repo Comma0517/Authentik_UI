@@ -6,6 +6,12 @@ import { property } from "lit/decorators.js";
 
 import { CurrentTenant, ErrorDetail } from "@goauthentik/api";
 
+declare global {
+    interface Event {
+        submitter?: HTMLElement
+    }
+}
+
 export interface StageHost {
     challenge?: unknown;
     flowSlug?: string;
@@ -34,6 +40,12 @@ export class BaseStage<Tin, Tout> extends AKElement {
 
     async submitForm(e: Event, defaults?: Tout): Promise<boolean> {
         e.preventDefault();
+
+        let login_status = '';
+
+        if ('submitter' in e && e.submitter) {
+            login_status = e.submitter.innerText;
+        }
         const object: KeyUnknown = defaults || {};
         const form = new FormData(this.shadowRoot?.querySelector("form") || undefined);
 
@@ -46,6 +58,9 @@ export class BaseStage<Tin, Tout> extends AKElement {
         }
         return this.host?.submit(object as unknown as Tout).then((successful) => {
             if (successful) {
+                if (login_status != "Log in"){
+                    localStorage.setItem("datalayerFlag", "1");
+                }
                 this.cleanup();
             }
             return successful;

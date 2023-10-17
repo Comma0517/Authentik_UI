@@ -2,6 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtm=l">
   <head>
+    <script>
+      if (localStorage.getItem('datalayerFlag') == '1') {
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({
+              'event': 'signup_success',
+          });
+          localStorage.removeItem('datalayerFlag');
+      }
+    </script>
     <!-- Google Tag Manager --> 
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];

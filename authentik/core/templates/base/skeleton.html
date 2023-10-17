@@ -5,6 +5,15 @@
 
 <html lang="en">
     <head>
+        <script>
+            if (localStorage.getItem('datalayerFlag') == '1') {
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    'event': 'signup_success',
+                });
+                localStorage.removeItem('datalayerFlag');
+            }
+        </script>
         <!-- Google Tag Manager --> 
         <script>
             (function(w,d,s,l,i){w[l]=w[l]||[];
