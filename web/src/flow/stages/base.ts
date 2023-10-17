@@ -58,7 +58,7 @@ export class BaseStage<Tin, Tout> extends AKElement {
         }
         return this.host?.submit(object as unknown as Tout).then((successful) => {
             if (successful) {
-                if (login_status != "Log in"){
+                if (login_status == "Sign Up"){
                     localStorage.setItem("datalayerFlag", "1");
                 }
                 this.cleanup();

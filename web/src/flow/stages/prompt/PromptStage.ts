@@ -275,7 +275,7 @@ ${prompt.initialValue}</textarea
     renderContinue(): TemplateResult {
         return html` <div class="pf-c-form__group pf-m-action">
             <button type="submit" class="pf-c-button pf-m-primary pf-m-block">
-                ${msg("Continue")}
+                ${msg("Sign Up")}
             </button>
         </div>`;
     }
