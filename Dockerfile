@@ -35,7 +35,7 @@ COPY ./website /work/website/
 RUN npm run build
 
 # Stage 3: Build go proxy
-FROM docker.io/golang:1.21.2-bookworm AS go-builder
+FROM docker.io/golang:1.21.5-bookworm AS go-builder
 
 WORKDIR /go/src/goauthentik.io
 
